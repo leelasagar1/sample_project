@@ -31,6 +31,8 @@ def train_and_evaluate(config_path):
     alpha = config["estimators"]["ElasticNet"]['params']['alpha']
     li_ratio = config["estimators"]["ElasticNet"]['params']['li_ratio']
     target = [config['base']['target_col'] ]
+    scores_file = config['reports']['scores']
+    params_file = config['reports']['params']
 
     train = pd.read_csv(train_data_path)
     test = pd.read_csv(test_data_path)
@@ -48,6 +50,18 @@ def train_and_evaluate(config_path):
     print(predict_quantities.shape,test_y.shape)
     (rmse,mae,r2) = eval_quantities(test_y,predict_quantities)
     print(rmse,mae,r2)
+    with open(scores_file,'w') as f:
+        scores = {
+            'rmse':rmse,
+            'mae':mae,
+            'r2':r2
+        }
+    with open(params_file,'w') as f:
+        scores = {
+            'rmse':rmse,
+            'mae':mae,
+            'r2':r2
+        }
     joblib.dump(lr, os.path.join(model_dir,'model.pkl'))
 
 if __name__ == "__main__":

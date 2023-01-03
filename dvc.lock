@@ -48,5 +48,5 @@ stages:
       md5: f34bbf3b3466d6875caf35562d466273
       size: 662
     - path: src/train_and_evaluate.py
-      md5: 6727ff7fe3f97888f6e9e6cbbd78868b
-      size: 1801
+      md5: ef2af7dbb064f185d1efdefd0d3d2ab0
+      size: 2175

@@ -25,4 +25,14 @@ stages:
       - src/train_and_evaluate.py
       - data/processed/train_winequality.csv
       - data/processed/test_winequality.csv
+    params:
+      - estimators.ElasticNet.params.alpha
+    metrics:
+      - reports/params.json:
+            cache: false
+      - reports/scores.json:
+            cache: false
+    outs:
+      - saved_models/model.pkl
+    
     
